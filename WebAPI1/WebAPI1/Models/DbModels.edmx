@@ -93,7 +93,7 @@
           <Key>
             <PropertyRef Name="PRO_ID" />
           </Key>
-          <Property Name="PRO_ID" Type="int" Nullable="false" />
+          <Property Name="PRO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BRANCH_ID" Type="int" Nullable="false" />
           <Property Name="PRO_CODE" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="PRO_NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -147,7 +147,7 @@
           <Key>
             <PropertyRef Name="STUTYPE_ID" />
           </Key>
-          <Property Name="STUTYPE_ID" Type="int" Nullable="false" />
+          <Property Name="STUTYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TYPE_NAME" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="STATUS" Type="int" />
         </EntityType>
@@ -315,18 +315,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_STUDENT_OF3_TYPE_STU">
-          <End Role="TYPE_STUDENT" Type="Self.TYPE_STUDENT" Multiplicity="1" />
-          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TYPE_STUDENT">
-              <PropertyRef Name="STUTYPE_ID" />
-            </Principal>
-            <Dependent Role="STUDENT">
-              <PropertyRef Name="STUTYPE_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_STUDENT_OF4_CATALOG">
           <End Role="CATALOG" Type="Self.CATALOG" Multiplicity="1" />
           <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
@@ -336,18 +324,6 @@
             </Principal>
             <Dependent Role="STUDENT">
               <PropertyRef Name="CATA_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_STUDENT_STUDY_PROGRAMS">
-          <End Role="PROGRAMS" Type="Self.PROGRAMS" Multiplicity="0..1" />
-          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROGRAMS">
-              <PropertyRef Name="PRO_ID" />
-            </Principal>
-            <Dependent Role="STUDENT">
-              <PropertyRef Name="PRO_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -410,16 +386,8 @@
             <End Role="CONTACT" EntitySet="CONTACT" />
             <End Role="STUDENT" EntitySet="STUDENT" />
           </AssociationSet>
-          <AssociationSet Name="FK_STUDENT_OF3_TYPE_STU" Association="Self.FK_STUDENT_OF3_TYPE_STU">
-            <End Role="TYPE_STUDENT" EntitySet="TYPE_STUDENT" />
-            <End Role="STUDENT" EntitySet="STUDENT" />
-          </AssociationSet>
           <AssociationSet Name="FK_STUDENT_OF4_CATALOG" Association="Self.FK_STUDENT_OF4_CATALOG">
             <End Role="CATALOG" EntitySet="CATALOG" />
-            <End Role="STUDENT" EntitySet="STUDENT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_STUDENT_STUDY_PROGRAMS" Association="Self.FK_STUDENT_STUDY_PROGRAMS">
-            <End Role="PROGRAMS" EntitySet="PROGRAMS" />
             <End Role="STUDENT" EntitySet="STUDENT" />
           </AssociationSet>
         </EntityContainer>
@@ -529,7 +497,7 @@
           <Key>
             <PropertyRef Name="PRO_ID" />
           </Key>
-          <Property Name="PRO_ID" Type="Int32" Nullable="false" />
+          <Property Name="PRO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BRANCH_ID" Type="Int32" Nullable="false" />
           <Property Name="PRO_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PRO_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
@@ -537,7 +505,6 @@
           <Property Name="CREDITS_ELEC" Type="Int32" />
           <Property Name="STATUS" Type="Int32" />
           <NavigationProperty Name="BRANCH" Relationship="Self.FK_PROGRAMS_HAS_CATEG_BRANCH" FromRole="PROGRAMS" ToRole="BRANCH" />
-          <NavigationProperty Name="STUDENTs" Relationship="Self.FK_STUDENT_STUDY_PROGRAMS" FromRole="PROGRAMS" ToRole="STUDENT" />
         </EntityType>
         <EntityType Name="SEMESTER">
           <Key>
@@ -585,17 +552,14 @@
           <NavigationProperty Name="CONTACTs" Relationship="Self.FK_CONTACT_HAS2_STUDENT" FromRole="STUDENT" ToRole="CONTACT" />
           <NavigationProperty Name="CONTACT" Relationship="Self.FK_STUDENT_HAS_CONTACT" FromRole="STUDENT" ToRole="CONTACT" />
           <NavigationProperty Name="DOCUMENTs" Relationship="Self.FK_DOCUMENT_DOCUMENT_STUDENT" FromRole="STUDENT" ToRole="DOCUMENT" />
-          <NavigationProperty Name="PROGRAM" Relationship="Self.FK_STUDENT_STUDY_PROGRAMS" FromRole="STUDENT" ToRole="PROGRAMS" />
-          <NavigationProperty Name="TYPE_STUDENT" Relationship="Self.FK_STUDENT_OF3_TYPE_STU" FromRole="STUDENT" ToRole="TYPE_STUDENT" />
         </EntityType>
         <EntityType Name="TYPE_STUDENT">
           <Key>
             <PropertyRef Name="STUTYPE_ID" />
           </Key>
-          <Property Name="STUTYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="STUTYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TYPE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="STATUS" Type="Int32" />
-          <NavigationProperty Name="STUDENTs" Relationship="Self.FK_STUDENT_OF3_TYPE_STU" FromRole="TYPE_STUDENT" ToRole="STUDENT" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
@@ -754,18 +718,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_STUDENT_STUDY_PROGRAMS">
-          <End Role="PROGRAMS" Type="Self.PROGRAM" Multiplicity="0..1" />
-          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROGRAMS">
-              <PropertyRef Name="PRO_ID" />
-            </Principal>
-            <Dependent Role="STUDENT">
-              <PropertyRef Name="PRO_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_INCLUDE_INCLUDE2_SEMESTER">
           <End Role="SEMESTER" Type="Self.SEMESTER" Multiplicity="1" />
           <End Role="YEAR_SEME" Type="Self.YEAR_SEME" Multiplicity="*" />
@@ -775,18 +727,6 @@
             </Principal>
             <Dependent Role="YEAR_SEME">
               <PropertyRef Name="SEM_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_STUDENT_OF3_TYPE_STU">
-          <End Role="TYPE_STUDENT" Type="Self.TYPE_STUDENT" Multiplicity="1" />
-          <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TYPE_STUDENT">
-              <PropertyRef Name="STUTYPE_ID" />
-            </Principal>
-            <Dependent Role="STUDENT">
-              <PropertyRef Name="STUTYPE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -857,17 +797,9 @@
             <End Role="STUDENT" EntitySet="STUDENTs" />
             <End Role="DOCUMENT" EntitySet="DOCUMENTs" />
           </AssociationSet>
-          <AssociationSet Name="FK_STUDENT_STUDY_PROGRAMS" Association="Self.FK_STUDENT_STUDY_PROGRAMS">
-            <End Role="PROGRAMS" EntitySet="PROGRAMS" />
-            <End Role="STUDENT" EntitySet="STUDENTs" />
-          </AssociationSet>
           <AssociationSet Name="FK_INCLUDE_INCLUDE2_SEMESTER" Association="Self.FK_INCLUDE_INCLUDE2_SEMESTER">
             <End Role="SEMESTER" EntitySet="SEMESTERs" />
             <End Role="YEAR_SEME" EntitySet="YEAR_SEME" />
-          </AssociationSet>
-          <AssociationSet Name="FK_STUDENT_OF3_TYPE_STU" Association="Self.FK_STUDENT_OF3_TYPE_STU">
-            <End Role="TYPE_STUDENT" EntitySet="TYPE_STUDENT" />
-            <End Role="STUDENT" EntitySet="STUDENTs" />
           </AssociationSet>
           <AssociationSet Name="FK_INCLUDE_INCLUDE_YEAR" Association="Self.FK_INCLUDE_INCLUDE_YEAR">
             <End Role="YEAR" EntitySet="YEARs" />

@@ -18,6 +18,10 @@ namespace QLSVISC.Controllers
     public class YEARController : ApiController
     {
         private DbModels db = new DbModels();
+        public YEARController()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+        }
 
         // GET: api/YEAR
         public IQueryable<YEAR> GetYEARs()

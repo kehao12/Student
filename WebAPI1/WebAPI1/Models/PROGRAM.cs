@@ -14,12 +14,6 @@ namespace WebAPI1.Models
     
     public partial class PROGRAM
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PROGRAM()
-        {
-            this.STUDENTs = new HashSet<STUDENT>();
-        }
-    
         public int PRO_ID { get; set; }
         public int BRANCH_ID { get; set; }
         public string PRO_CODE { get; set; }
@@ -29,7 +23,5 @@ namespace WebAPI1.Models
         public Nullable<int> STATUS { get; set; }
     
         public virtual BRANCH BRANCH { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STUDENT> STUDENTs { get; set; }
     }
 }

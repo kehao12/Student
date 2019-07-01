@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Saigon\student\WebAPI1\WebAPI1\Models\DbModels.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\WebAPI1\Models\DbModels.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

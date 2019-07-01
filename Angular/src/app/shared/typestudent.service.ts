@@ -34,7 +34,7 @@ export class TypestudentService {
     }
     this.modal.show();
   }
-  checkCode(id: number,code: string): boolean {
+  checkCode(id: number, code: string): boolean {
     if (this.list === null) { return true; }
     if (code === '' || code === null) { return true; }
     for (const pro of this.list) {

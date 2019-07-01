@@ -56,7 +56,5 @@ namespace WebAPI1.Models
         public virtual CONTACT CONTACT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DOCUMENT> DOCUMENTs { get; set; }
-        public virtual PROGRAM PROGRAM { get; set; }
-        public virtual TYPE_STUDENT TYPE_STUDENT { get; set; }
     }
 }

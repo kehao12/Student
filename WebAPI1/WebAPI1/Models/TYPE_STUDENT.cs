@@ -14,17 +14,8 @@ namespace WebAPI1.Models
     
     public partial class TYPE_STUDENT
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TYPE_STUDENT()
-        {
-            this.STUDENTs = new HashSet<STUDENT>();
-        }
-    
         public int STUTYPE_ID { get; set; }
         public string TYPE_NAME { get; set; }
         public Nullable<int> STATUS { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STUDENT> STUDENTs { get; set; }
     }
 }
