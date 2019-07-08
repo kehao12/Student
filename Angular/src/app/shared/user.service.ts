@@ -29,6 +29,7 @@ export class UserService {
       ADDRESS: '',
       STATUS: 1
     };
+    this.REPASSWORD = '';
   }
   showModal(event = null, obj: User ) {
     if (event != null) {

@@ -78,6 +78,10 @@ export const navItems: NavData[] = [
     name: 'Manage Type Student',
     url: '/typestudents',
   },
+  {
+    name: 'Manage Statistic',
+    url: '/statistic',
+  },
   // {
   //   name: 'Base',
   //   url: '/base',

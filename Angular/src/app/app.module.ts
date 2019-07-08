@@ -90,6 +90,7 @@ import { UsersComponent } from './views/users/users.component';
 import { UserComponent } from './views/users/user/user.component';
 import { UserListComponent } from './views/users/user-list/user-list.component';
 import { UserChangeComponent } from './views/users/user-change/user-change.component';
+import { StatisticComponent } from './views/statistic/statistic.component';
 
 
 @NgModule({
@@ -163,10 +164,11 @@ import { UserChangeComponent } from './views/users/user-change/user-change.compo
     UserComponent,
     UserListComponent,
     UserChangeComponent,
+    StatisticComponent,
 
 
   ],
-  providers: [ CookieService,PnotifyService ],
+  providers: [ CookieService, PnotifyService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

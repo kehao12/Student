@@ -40,34 +40,45 @@
           <div class="form-group row">
             <label for="inputPassword" class="col-md-3 col-form-label text-dark font-weight-bold">Father's Name</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" id="inputPassword" name="FATHER_NAME" [(ngModel)]="Contact.formData1.FATHER_NAME" >
+              <input type="text" class="form-control" id="inputPassword" name="FATHER_NAME" #FATHER_NAME="ngModel" [(ngModel)]="Contact.formData1.FATHER_NAME" >
             </div>
           </div>
+
           <div class="form-group row">
             <label for="inputPassword" class="col-md-3 col-form-label text-dark font-weight-bold">Father's Cellphone</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" id="inputPassword" name="FATHER_PHONE" [(ngModel)]="Contact.formData1.FATHER_PHONE">
+              <input type="text" class="form-control" id="inputPassword" [disabled]="!Contact.formData1.FATHER_NAME.trim()" 
+              name="FATHER_PHONE" #FATHER_PHONE="ngModel"  [(ngModel)]="Contact.formData1.FATHER_PHONE"
+              pattern="(09|03|07|08|05)+([0-9]{8})"  required
+        [ngClass]="{ 'is-invalid':(FATHER_PHONE.errors && FATHER_PHONE.touched),'is-valid': !FATHER_PHONE.errors && FATHER_PHONE.touched}"
+              >
             </div>
           </div>
           <div class="form-group row">
             <label for="inputPassword" class="col-md-3 col-form-label text-dark font-weight-bold">Father's Email Address</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" id="inputPassword"  name="FATHER_MAIL" [(ngModel)]="Contact.formData1.FATHER_MAIL">
+              <input type="email" class="form-control"  pattern="[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})" class="form-control" #FATHER_MAIL="ngModel"
+              #FATHER_MAIL="ngModel" id="inputPassword" [disabled]="!Contact.formData1.FATHER_NAME.trim()" 
+               name="FATHER_MAIL" [(ngModel)]="Contact.formData1.FATHER_MAIL"
+               [ngClass]="{ 'is-invalid':(FATHER_MAIL.errors && FATHER_MAIL.touched),'is-valid': !FATHER_MAIL.errors && FATHER_MAIL.touched}">
+              <span *ngIf="FATHER_MAIL.invalid && FATHER_MAIL.touched" class="text-danger">Email is invalid</span>
             </div>
           </div>
           <div class="form-group row">
             <label for="inputPassword" class="col-md-3 col-form-label text-dark font-weight-bold">Father's Working Place</label>
             <div class="col-md-9">
-              <input type="text" class="form-control" id="inputPassword"  name="FATHER_WORKING" [(ngModel)]="Contact.formData1.FATHER_WORKING">
+              <input type="text" class="form-control" id="inputPassword" [disabled]="!Contact.formData1.FATHER_NAME.trim()"  name="FATHER_WORKING" [(ngModel)]="Contact.formData1.FATHER_WORKING">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputPassword" class="col-md-3 col-form-label text-dark font-weight-bold">Father's Position
             </label>
             <div class="col-md-9">
-              <input type="text" class="form-control" id="inputPassword" name="FATHER_POSISION" [(ngModel)]="Contact.formData1.FATHER_POSISION">
+              <input type="text" class="form-control" id="inputPassword" [disabled]="!Contact.formData1.FATHER_NAME.trim()" name="FATHER_POSISION" [(ngModel)]="Contact.formData1.FATHER_POSISION">
             </div>
           </div>
+
+
         </form>
       </div>
     </div>

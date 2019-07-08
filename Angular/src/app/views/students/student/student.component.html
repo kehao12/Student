@@ -209,7 +209,9 @@
     <div class="col-sm-12 row">
       <label for="" class="col-form-label col-sm-2">Email:</label>
       <div class="col-sm-10">
-        <input type="email" pattern="[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})" class="form-control" name="EMAIL" #EMAIL="ngModel" placeholder="email@gmail.com" [(ngModel)]="service.formData.EMAIL">
+        <input type="email" pattern="[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})" class="form-control" name="EMAIL" 
+        #EMAIL="ngModel" placeholder="email@gmail.com" [(ngModel)]="service.formData.EMAIL"
+        [ngClass]="{ 'is-invalid':(EMAIL.errors && EMAIL.touched),'is-valid': !EMAIL.errors && EMAIL.touched}">
         <span *ngIf="EMAIL.invalid" class="text-danger">Email is invalid</span>
       </div>
     </div>

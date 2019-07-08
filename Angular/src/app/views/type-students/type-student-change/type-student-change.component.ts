@@ -26,5 +26,5 @@ export class TypeStudentChangeComponent implements OnInit {
       this.service.resetForm(); this.service.refreshList();
     });
   }
-  
+
 }
