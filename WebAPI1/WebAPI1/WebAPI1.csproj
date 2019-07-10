@@ -178,6 +178,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\INPUT_TYPEController.cs" />
     <Compile Include="Controllers\INTAKEController.cs" />
+    <Compile Include="Controllers\LESSONController.cs" />
+    <Compile Include="Controllers\LESS_CONDITIONController.cs" />
     <Compile Include="Controllers\PROGRAMController.cs" />
     <Compile Include="Controllers\SEMESTERController.cs" />
     <Compile Include="Controllers\STUDENTController.cs" />
@@ -222,6 +224,12 @@
       <DependentUpon>DbModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\INTAKE.cs">
+      <DependentUpon>DbModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LESSON.cs">
+      <DependentUpon>DbModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LESS_CONDITION.cs">
       <DependentUpon>DbModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PROGRAM.cs">

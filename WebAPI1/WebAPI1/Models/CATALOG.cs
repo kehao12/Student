@@ -18,6 +18,7 @@ namespace WebAPI1.Models
         public CATALOG()
         {
             this.INTAKEs = new HashSet<INTAKE>();
+            this.LESSONs = new HashSet<LESSON>();
             this.STUDENTs = new HashSet<STUDENT>();
         }
     
@@ -31,6 +32,8 @@ namespace WebAPI1.Models
         public virtual YEAR YEAR1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INTAKE> INTAKEs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LESSON> LESSONs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STUDENT> STUDENTs { get; set; }
     }

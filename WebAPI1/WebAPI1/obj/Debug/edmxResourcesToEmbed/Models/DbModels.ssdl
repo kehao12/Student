@@ -57,11 +57,11 @@
   </EntityType>
   <EntityType Name="DOCUMENT">
     <Key>
-      <PropertyRef Name="STU_ID" />
-      <PropertyRef Name="CATE_ID" />
+      <PropertyRef Name="ID" />
     </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="STU_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="CATE_ID" Type="int" Nullable="false" />
+    <Property Name="CATE_ID" Type="int" />
     <Property Name="CHECKBOX" Type="smallint" />
     <Property Name="NOTE" Type="nvarchar" MaxLength="100" />
     <Property Name="TEXT" Type="varchar" MaxLength="100" />
@@ -83,6 +83,29 @@
     <Property Name="INTAKE_CODE" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="INTAKE_NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="STATUS" Type="int" />
+  </EntityType>
+  <EntityType Name="LESS_CONDITION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LESS_NOW" Type="int" />
+    <Property Name="LESS_PRE" Type="int" Nullable="false" />
+    <Property Name="STATUS" Type="int" />
+  </EntityType>
+  <EntityType Name="LESSON">
+    <Key>
+      <PropertyRef Name="LESS_ID" />
+    </Key>
+    <Property Name="LESS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LESS_CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LESS_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PRO_ID" Type="int" />
+    <Property Name="CATA_ID" Type="int" />
+    <Property Name="CREDIT" Type="int" />
+    <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="STATUS" Type="int" />
+    <Property Name="NOTE" Type="ntext" />
   </EntityType>
   <EntityType Name="PROGRAMS">
     <Key>
@@ -125,7 +148,7 @@
     <Property Name="PLACE_BIRTH" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="HOME_COUNTRY" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="GENDER" Type="int" Nullable="false" />
-    <Property Name="PHONE" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PHONE" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="EMAIL" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="PERSON_ID" Type="nvarchar" MaxLength="50" />
     <Property Name="HOBBY" Type="nvarchar" MaxLength="100" />
@@ -135,7 +158,7 @@
     <Property Name="PORTAL_ADDRESS" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="PORTAL_CITY" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="PROTAL_COUNTRY" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="IMG" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IMG" Type="varchar(max)" Nullable="false" />
     <Property Name="STATUS" Type="int" />
   </EntityType>
   <EntityType Name="TYPE_STUDENT">
@@ -239,7 +262,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DOCUMENT_DOCUMENT2_CATELOGY">
-    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
     <End Role="DOCUMENT" Type="Self.DOCUMENT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CATEGORY">
@@ -286,6 +309,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_LESSON_CATALOG">
+    <End Role="CATALOG" Type="Self.CATALOG" Multiplicity="0..1" />
+    <End Role="LESSON" Type="Self.LESSON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATALOG">
+        <PropertyRef Name="CATA_ID" />
+      </Principal>
+      <Dependent Role="LESSON">
+        <PropertyRef Name="CATA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LESSON_PROGRAMS">
+    <End Role="PROGRAMS" Type="Self.PROGRAMS" Multiplicity="0..1" />
+    <End Role="LESSON" Type="Self.LESSON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRAMS">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="LESSON">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PROGRAMS_HAS_CATEG_BRANCH">
     <End Role="BRANCH" Type="Self.BRANCH" Multiplicity="1" />
     <End Role="PROGRAMS" Type="Self.PROGRAMS" Multiplicity="*" />
@@ -310,6 +357,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_STUDENT_OF3_TYPE_STU">
+    <End Role="TYPE_STUDENT" Type="Self.TYPE_STUDENT" Multiplicity="1" />
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TYPE_STUDENT">
+        <PropertyRef Name="STUTYPE_ID" />
+      </Principal>
+      <Dependent Role="STUDENT">
+        <PropertyRef Name="STUTYPE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_STUDENT_OF4_CATALOG">
     <End Role="CATALOG" Type="Self.CATALOG" Multiplicity="1" />
     <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
@@ -322,6 +381,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_STUDENT_STUDY_PROGRAMS">
+    <End Role="PROGRAMS" Type="Self.PROGRAMS" Multiplicity="0..1" />
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRAMS">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="STUDENT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="QLTTSVModelStoreContainer">
     <EntitySet Name="BRANCH" EntityType="Self.BRANCH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CATALOG" EntityType="Self.CATALOG" Schema="dbo" store:Type="Tables" />
@@ -330,6 +401,8 @@
     <EntitySet Name="DOCUMENT" EntityType="Self.DOCUMENT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="INPUT_TYPE" EntityType="Self.INPUT_TYPE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="INTAKE" EntityType="Self.INTAKE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LESS_CONDITION" EntityType="Self.LESS_CONDITION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LESSON" EntityType="Self.LESSON" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PROGRAMS" EntityType="Self.PROGRAMS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SEMESTER" EntityType="Self.SEMESTER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="STUDENT" EntityType="Self.STUDENT" Schema="dbo" store:Type="Tables" />
@@ -373,6 +446,14 @@
       <End Role="CATALOG" EntitySet="CATALOG" />
       <End Role="INTAKE" EntitySet="INTAKE" />
     </AssociationSet>
+    <AssociationSet Name="FK_LESSON_CATALOG" Association="Self.FK_LESSON_CATALOG">
+      <End Role="CATALOG" EntitySet="CATALOG" />
+      <End Role="LESSON" EntitySet="LESSON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LESSON_PROGRAMS" Association="Self.FK_LESSON_PROGRAMS">
+      <End Role="PROGRAMS" EntitySet="PROGRAMS" />
+      <End Role="LESSON" EntitySet="LESSON" />
+    </AssociationSet>
     <AssociationSet Name="FK_PROGRAMS_HAS_CATEG_BRANCH" Association="Self.FK_PROGRAMS_HAS_CATEG_BRANCH">
       <End Role="BRANCH" EntitySet="BRANCH" />
       <End Role="PROGRAMS" EntitySet="PROGRAMS" />
@@ -381,8 +462,16 @@
       <End Role="CONTACT" EntitySet="CONTACT" />
       <End Role="STUDENT" EntitySet="STUDENT" />
     </AssociationSet>
+    <AssociationSet Name="FK_STUDENT_OF3_TYPE_STU" Association="Self.FK_STUDENT_OF3_TYPE_STU">
+      <End Role="TYPE_STUDENT" EntitySet="TYPE_STUDENT" />
+      <End Role="STUDENT" EntitySet="STUDENT" />
+    </AssociationSet>
     <AssociationSet Name="FK_STUDENT_OF4_CATALOG" Association="Self.FK_STUDENT_OF4_CATALOG">
       <End Role="CATALOG" EntitySet="CATALOG" />
+      <End Role="STUDENT" EntitySet="STUDENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STUDENT_STUDY_PROGRAMS" Association="Self.FK_STUDENT_STUDY_PROGRAMS">
+      <End Role="PROGRAMS" EntitySet="PROGRAMS" />
       <End Role="STUDENT" EntitySet="STUDENT" />
     </AssociationSet>
   </EntityContainer>

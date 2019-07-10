@@ -27,6 +27,7 @@ import { ProgramsComponent } from './views/programs/programs.component';
 import { TypeStudentsComponent } from './views/type-students/type-students.component';
 import { UsersComponent } from './views/users/users.component';
 import { StatisticComponent } from './views/statistic/statistic.component';
+import { LessonsComponent } from './views/lessons/lessons.component';
 
 export const routes: Routes = [
   {
@@ -96,6 +97,10 @@ export const routes: Routes = [
       {
         path: 'statistic',
         component: StatisticComponent
+      },
+      {
+        path: 'lessons',
+        component: LessonsComponent
       },
       {
         path: 'programs',

@@ -91,6 +91,11 @@ import { UserComponent } from './views/users/user/user.component';
 import { UserListComponent } from './views/users/user-list/user-list.component';
 import { UserChangeComponent } from './views/users/user-change/user-change.component';
 import { StatisticComponent } from './views/statistic/statistic.component';
+import { LessonsComponent } from './views/lessons/lessons.component';
+import { LessonComponent } from './views/lessons/lesson/lesson.component';
+import { LessonChangeComponent } from './views/lessons/lesson-change/lesson-change.component';
+import { LessonListComponent } from './views/lessons/lesson-list/lesson-list.component';
+
 
 
 @NgModule({
@@ -165,6 +170,11 @@ import { StatisticComponent } from './views/statistic/statistic.component';
     UserListComponent,
     UserChangeComponent,
     StatisticComponent,
+    LessonsComponent,
+    LessonComponent,
+    LessonChangeComponent,
+    LessonListComponent,
+
 
 
   ],

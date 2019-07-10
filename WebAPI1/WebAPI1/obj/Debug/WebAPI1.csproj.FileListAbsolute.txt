@@ -86,7 +86,6 @@ C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Saigon\student\WebAPI1\WebAPI1
 C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Saigon\student\WebAPI1\WebAPI1\obj\Debug\WebAPI1.csproj.CopyComplete
 C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Saigon\student\WebAPI1\WebAPI1\obj\Debug\WebAPI1.dll
 C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Saigon\student\WebAPI1\WebAPI1\obj\Debug\WebAPI1.pdb
-C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\WebAPI1\obj\Debug\WebAPI1.csprojAssemblyReference.cache
 C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\WebAPI1\obj\Debug\WebAPI1.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\WebAPI1\obj\Debug\WebAPI1.dll
 C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\WebAPI1\obj\Debug\WebAPI1.pdb
@@ -175,3 +174,4 @@ C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\Web
 C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\WebAPI1\bin\Antlr3.Runtime.pdb
 C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\WebAPI1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\WebAPI1\obj\Debug\WebAPI1.csproj.CopyComplete
+C:\Users\Admin\Desktop\ISC Quang Trung\SaigonTech\Student_SG\Student\WebAPI1\WebAPI1\obj\Debug\WebAPI1.csprojAssemblyReference.cache

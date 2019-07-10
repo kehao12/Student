@@ -32,6 +32,8 @@ namespace WebAPI1.Models
         public virtual DbSet<DOCUMENT> DOCUMENTs { get; set; }
         public virtual DbSet<INPUT_TYPE> INPUT_TYPE { get; set; }
         public virtual DbSet<INTAKE> INTAKEs { get; set; }
+        public virtual DbSet<LESS_CONDITION> LESS_CONDITION { get; set; }
+        public virtual DbSet<LESSON> LESSONs { get; set; }
         public virtual DbSet<PROGRAM> PROGRAMS { get; set; }
         public virtual DbSet<SEMESTER> SEMESTERs { get; set; }
         public virtual DbSet<STUDENT> STUDENTs { get; set; }

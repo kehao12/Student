@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +19,9 @@ export class ApiService {
     typestudent: this.baseurl + 'TYPE_STUDENT',
     branch: this.baseurl + 'BRANCH',
     user: this.baseurl + 'USER',
-    contact: this.baseurl + 'CONTACT'
+    contact: this.baseurl + 'CONTACT',
+    lesson: this.baseurl + 'LESSON',
+    condition: this.baseurl + 'LESS_CONDITION'
 
   };
 }

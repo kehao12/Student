@@ -12,16 +12,11 @@ namespace WebAPI1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DOCUMENT
+    public partial class LESS_CONDITION
     {
         public int ID { get; set; }
-        public string STU_ID { get; set; }
-        public Nullable<int> CATE_ID { get; set; }
-        public Nullable<short> CHECKBOX { get; set; }
-        public string NOTE { get; set; }
-        public string TEXT { get; set; }
-    
-        public virtual CATEGORY CATEGORY { get; set; }
-        public virtual STUDENT STUDENT { get; set; }
+        public Nullable<int> LESS_NOW { get; set; }
+        public int LESS_PRE { get; set; }
+        public Nullable<int> STATUS { get; set; }
     }
 }

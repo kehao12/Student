@@ -59,6 +59,10 @@ export const navItems: NavData[] = [
     url: '/intakes',
   },
   {
+    name: 'Manage Lesson',
+    url: '/lessons',
+  },
+  {
     name: 'Manage Program',
     url: '/programs',
   },

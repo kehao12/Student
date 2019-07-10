@@ -63,6 +63,7 @@
     <EntitySetMapping Name="DOCUMENTs">
       <EntityTypeMapping TypeName="QLTTSVModel.DOCUMENT">
         <MappingFragment StoreEntitySet="DOCUMENT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="STU_ID" ColumnName="STU_ID" />
           <ScalarProperty Name="CATE_ID" ColumnName="CATE_ID" />
           <ScalarProperty Name="CHECKBOX" ColumnName="CHECKBOX" />
@@ -88,6 +89,31 @@
           <ScalarProperty Name="INTAKE_CODE" ColumnName="INTAKE_CODE" />
           <ScalarProperty Name="INTAKE_NAME" ColumnName="INTAKE_NAME" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LESS_CONDITION">
+      <EntityTypeMapping TypeName="QLTTSVModel.LESS_CONDITION">
+        <MappingFragment StoreEntitySet="LESS_CONDITION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LESS_NOW" ColumnName="LESS_NOW" />
+          <ScalarProperty Name="LESS_PRE" ColumnName="LESS_PRE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LESSONs">
+      <EntityTypeMapping TypeName="QLTTSVModel.LESSON">
+        <MappingFragment StoreEntitySet="LESSON">
+          <ScalarProperty Name="LESS_ID" ColumnName="LESS_ID" />
+          <ScalarProperty Name="LESS_CODE" ColumnName="LESS_CODE" />
+          <ScalarProperty Name="LESS_NAME" ColumnName="LESS_NAME" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="CATA_ID" ColumnName="CATA_ID" />
+          <ScalarProperty Name="CREDIT" ColumnName="CREDIT" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="NOTE" ColumnName="NOTE" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

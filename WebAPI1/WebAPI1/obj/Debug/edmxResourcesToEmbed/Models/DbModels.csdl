@@ -21,6 +21,7 @@
     <NavigationProperty Name="YEAR" Relationship="Self.FK_CATALOG_YEAR_END_YEAR" FromRole="CATALOG" ToRole="YEAR" />
     <NavigationProperty Name="YEAR1" Relationship="Self.FK_CATALOG_YEAR_STAR_YEAR" FromRole="CATALOG" ToRole="YEAR" />
     <NavigationProperty Name="INTAKEs" Relationship="Self.FK_INTAKE_IN_CATALOG" FromRole="CATALOG" ToRole="INTAKE" />
+    <NavigationProperty Name="LESSONs" Relationship="Self.FK_LESSON_CATALOG" FromRole="CATALOG" ToRole="LESSON" />
     <NavigationProperty Name="STUDENTs" Relationship="Self.FK_STUDENT_OF4_CATALOG" FromRole="CATALOG" ToRole="STUDENT" />
   </EntityType>
   <EntityType Name="CATEGORY">
@@ -66,11 +67,11 @@
   </EntityType>
   <EntityType Name="DOCUMENT">
     <Key>
-      <PropertyRef Name="STU_ID" />
-      <PropertyRef Name="CATE_ID" />
+      <PropertyRef Name="ID" />
     </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="STU_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CATE_ID" Type="Int32" Nullable="false" />
+    <Property Name="CATE_ID" Type="Int32" />
     <Property Name="CHECKBOX" Type="Int16" />
     <Property Name="NOTE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="TEXT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -97,6 +98,31 @@
     <Property Name="STATUS" Type="Int32" />
     <NavigationProperty Name="CATALOG" Relationship="Self.FK_INTAKE_IN_CATALOG" FromRole="INTAKE" ToRole="CATALOG" />
   </EntityType>
+  <EntityType Name="LESS_CONDITION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LESS_NOW" Type="Int32" />
+    <Property Name="LESS_PRE" Type="Int32" Nullable="false" />
+    <Property Name="STATUS" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LESSON">
+    <Key>
+      <PropertyRef Name="LESS_ID" />
+    </Key>
+    <Property Name="LESS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LESS_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LESS_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PRO_ID" Type="Int32" />
+    <Property Name="CATA_ID" Type="Int32" />
+    <Property Name="CREDIT" Type="Int32" />
+    <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="STATUS" Type="Int32" />
+    <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CATALOG" Relationship="Self.FK_LESSON_CATALOG" FromRole="LESSON" ToRole="CATALOG" />
+    <NavigationProperty Name="PROGRAM" Relationship="Self.FK_LESSON_PROGRAMS" FromRole="LESSON" ToRole="PROGRAMS" />
+  </EntityType>
   <EntityType Name="PROGRAM">
     <Key>
       <PropertyRef Name="PRO_ID" />
@@ -109,6 +135,8 @@
     <Property Name="CREDITS_ELEC" Type="Int32" />
     <Property Name="STATUS" Type="Int32" />
     <NavigationProperty Name="BRANCH" Relationship="Self.FK_PROGRAMS_HAS_CATEG_BRANCH" FromRole="PROGRAMS" ToRole="BRANCH" />
+    <NavigationProperty Name="LESSONs" Relationship="Self.FK_LESSON_PROGRAMS" FromRole="PROGRAMS" ToRole="LESSON" />
+    <NavigationProperty Name="STUDENTs" Relationship="Self.FK_STUDENT_STUDY_PROGRAMS" FromRole="PROGRAMS" ToRole="STUDENT" />
   </EntityType>
   <EntityType Name="SEMESTER">
     <Key>
@@ -140,7 +168,7 @@
     <Property Name="PLACE_BIRTH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="HOME_COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="GENDER" Type="Int32" Nullable="false" />
-    <Property Name="PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PHONE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PERSON_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HOBBY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -150,12 +178,14 @@
     <Property Name="PORTAL_ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PORTAL_CITY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PROTAL_COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="IMG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IMG" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="STATUS" Type="Int32" />
     <NavigationProperty Name="CATALOG" Relationship="Self.FK_STUDENT_OF4_CATALOG" FromRole="STUDENT" ToRole="CATALOG" />
     <NavigationProperty Name="CONTACTs" Relationship="Self.FK_CONTACT_HAS2_STUDENT" FromRole="STUDENT" ToRole="CONTACT" />
     <NavigationProperty Name="CONTACT" Relationship="Self.FK_STUDENT_HAS_CONTACT" FromRole="STUDENT" ToRole="CONTACT" />
     <NavigationProperty Name="DOCUMENTs" Relationship="Self.FK_DOCUMENT_DOCUMENT_STUDENT" FromRole="STUDENT" ToRole="DOCUMENT" />
+    <NavigationProperty Name="PROGRAM" Relationship="Self.FK_STUDENT_STUDY_PROGRAMS" FromRole="STUDENT" ToRole="PROGRAMS" />
+    <NavigationProperty Name="TYPE_STUDENT" Relationship="Self.FK_STUDENT_OF3_TYPE_STU" FromRole="STUDENT" ToRole="TYPE_STUDENT" />
   </EntityType>
   <EntityType Name="TYPE_STUDENT">
     <Key>
@@ -164,6 +194,7 @@
     <Property Name="STUTYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TYPE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="STATUS" Type="Int32" />
+    <NavigationProperty Name="STUDENTs" Relationship="Self.FK_STUDENT_OF3_TYPE_STU" FromRole="TYPE_STUDENT" ToRole="STUDENT" />
   </EntityType>
   <EntityType Name="USER">
     <Key>
@@ -250,6 +281,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_LESSON_CATALOG">
+    <End Role="CATALOG" Type="Self.CATALOG" Multiplicity="0..1" />
+    <End Role="LESSON" Type="Self.LESSON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATALOG">
+        <PropertyRef Name="CATA_ID" />
+      </Principal>
+      <Dependent Role="LESSON">
+        <PropertyRef Name="CATA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_STUDENT_OF4_CATALOG">
     <End Role="CATALOG" Type="Self.CATALOG" Multiplicity="1" />
     <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
@@ -275,7 +318,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DOCUMENT_DOCUMENT2_CATELOGY">
-    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
     <End Role="DOCUMENT" Type="Self.DOCUMENT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CATEGORY">
@@ -322,6 +365,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_LESSON_PROGRAMS">
+    <End Role="PROGRAMS" Type="Self.PROGRAM" Multiplicity="0..1" />
+    <End Role="LESSON" Type="Self.LESSON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRAMS">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="LESSON">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STUDENT_STUDY_PROGRAMS">
+    <End Role="PROGRAMS" Type="Self.PROGRAM" Multiplicity="0..1" />
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRAMS">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="STUDENT">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_INCLUDE_INCLUDE2_SEMESTER">
     <End Role="SEMESTER" Type="Self.SEMESTER" Multiplicity="1" />
     <End Role="YEAR_SEME" Type="Self.YEAR_SEME" Multiplicity="*" />
@@ -331,6 +398,18 @@
       </Principal>
       <Dependent Role="YEAR_SEME">
         <PropertyRef Name="SEM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STUDENT_OF3_TYPE_STU">
+    <End Role="TYPE_STUDENT" Type="Self.TYPE_STUDENT" Multiplicity="1" />
+    <End Role="STUDENT" Type="Self.STUDENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TYPE_STUDENT">
+        <PropertyRef Name="STUTYPE_ID" />
+      </Principal>
+      <Dependent Role="STUDENT">
+        <PropertyRef Name="STUTYPE_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -354,6 +433,8 @@
     <EntitySet Name="DOCUMENTs" EntityType="Self.DOCUMENT" />
     <EntitySet Name="INPUT_TYPE" EntityType="Self.INPUT_TYPE" />
     <EntitySet Name="INTAKEs" EntityType="Self.INTAKE" />
+    <EntitySet Name="LESS_CONDITION" EntityType="Self.LESS_CONDITION" />
+    <EntitySet Name="LESSONs" EntityType="Self.LESSON" />
     <EntitySet Name="PROGRAMS" EntityType="Self.PROGRAM" />
     <EntitySet Name="SEMESTERs" EntityType="Self.SEMESTER" />
     <EntitySet Name="STUDENTs" EntityType="Self.STUDENT" />
@@ -376,6 +457,10 @@
     <AssociationSet Name="FK_INTAKE_IN_CATALOG" Association="Self.FK_INTAKE_IN_CATALOG">
       <End Role="CATALOG" EntitySet="CATALOGs" />
       <End Role="INTAKE" EntitySet="INTAKEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LESSON_CATALOG" Association="Self.FK_LESSON_CATALOG">
+      <End Role="CATALOG" EntitySet="CATALOGs" />
+      <End Role="LESSON" EntitySet="LESSONs" />
     </AssociationSet>
     <AssociationSet Name="FK_STUDENT_OF4_CATALOG" Association="Self.FK_STUDENT_OF4_CATALOG">
       <End Role="CATALOG" EntitySet="CATALOGs" />
@@ -401,9 +486,21 @@
       <End Role="STUDENT" EntitySet="STUDENTs" />
       <End Role="DOCUMENT" EntitySet="DOCUMENTs" />
     </AssociationSet>
+    <AssociationSet Name="FK_LESSON_PROGRAMS" Association="Self.FK_LESSON_PROGRAMS">
+      <End Role="PROGRAMS" EntitySet="PROGRAMS" />
+      <End Role="LESSON" EntitySet="LESSONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STUDENT_STUDY_PROGRAMS" Association="Self.FK_STUDENT_STUDY_PROGRAMS">
+      <End Role="PROGRAMS" EntitySet="PROGRAMS" />
+      <End Role="STUDENT" EntitySet="STUDENTs" />
+    </AssociationSet>
     <AssociationSet Name="FK_INCLUDE_INCLUDE2_SEMESTER" Association="Self.FK_INCLUDE_INCLUDE2_SEMESTER">
       <End Role="SEMESTER" EntitySet="SEMESTERs" />
       <End Role="YEAR_SEME" EntitySet="YEAR_SEME" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STUDENT_OF3_TYPE_STU" Association="Self.FK_STUDENT_OF3_TYPE_STU">
+      <End Role="TYPE_STUDENT" EntitySet="TYPE_STUDENT" />
+      <End Role="STUDENT" EntitySet="STUDENTs" />
     </AssociationSet>
     <AssociationSet Name="FK_INCLUDE_INCLUDE_YEAR" Association="Self.FK_INCLUDE_INCLUDE_YEAR">
       <End Role="YEAR" EntitySet="YEARs" />
