@@ -96,50 +96,9 @@
     <button type="button" (click)="resetForm()" class="btn btn-danger btn-block">RESET</button>
   </div>
   <div class="form-group pull-right">
-    <button type="button" id="next" (click)="onSubmit(form)"
-     data-toggle="modal"
-      data-target="#con" [disabled]="form.invalid || !checkCode(-1,service.formData.LESS_CODE) || !checkName(-1,service.formData.LESS_NAME)" class="btn btn-info btn-block">NEXT</button>
+    <button type="button" id="next" (click)="onSubmit(form)" data-dismiss="modal"
+ [disabled]="form.invalid || !checkCode(-1,service.formData.LESS_CODE) || !checkName(-1,service.formData.LESS_NAME)" class="btn btn-info btn-block">NEXT</button>
   </div>
 </form>
 
-<!-- begin modal create -->
-<div class="modal fade" id="con" role="dialog" aria-hidden="true" #con>
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header bg-info">
-  
-          <h4 class="modal-title text-white">Add New Program</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-        <form #form1="ngForm" autocomplete="off">
-            <div class="form-group">
-            <label>CONDITION</label>
-            <select name="CON" #CON="ngModel" [(ngModel)]="service.CON" class="form-control">
-                <option [ngValue]=null>NOT IN</option>
-                <div class="">{{this.id}}</div>
-                <div class="">{{this.PRO_ID}}</div>
-              <ng-container  *ngFor="let less of service.list" >
-               
-                  <option *ngIf="less.STATUS == 1 && less.LESS_NAME !== service.formData.LESS_NAME && less.PRO_ID == service.formData.PRO_ID" [ngValue]="less.LESS_ID">
-                      {{less.LESS_NAME}}
-                  </option>
-                </ng-container>
 
-            </select>
-          </div>
-          <div class="form-group pull-right">
-              <button type="button"  [disabled]="form.invalid"  (click)="onSubmit1(form1)"
-               data-toggle="modal"
-                data-target="#con" data-dismiss="modal" class="btn btn-info btn-block">SUBMIT</button>
-            </div>
-        </form>
-        </div>
-  
-      </div>
-  
-    </div>
-  </div>
-  <!-- end modal create -->

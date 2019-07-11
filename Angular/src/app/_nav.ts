@@ -63,6 +63,10 @@ export const navItems: NavData[] = [
     url: '/lessons',
   },
   {
+    name: 'Manage Condition Lesson',
+    url: '/lesscons',
+  },
+  {
     name: 'Manage Program',
     url: '/programs',
   },

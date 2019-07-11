@@ -28,6 +28,9 @@ import { TypeStudentsComponent } from './views/type-students/type-students.compo
 import { UsersComponent } from './views/users/users.component';
 import { StatisticComponent } from './views/statistic/statistic.component';
 import { LessonsComponent } from './views/lessons/lessons.component';
+import { LessconsComponent } from './views/lesscons/lesscons.component';
+
+
 
 export const routes: Routes = [
   {
@@ -95,6 +98,10 @@ export const routes: Routes = [
         component: StudentsComponent
       },
       {
+        path: 'lesscons',
+        component: LessconsComponent
+      },
+      {
         path: 'statistic',
         component: StatisticComponent
       },
@@ -138,6 +145,7 @@ export const routes: Routes = [
         path: 'categories',
         component: CategoriesComponent
       },
+
        {
         path: 'categories',
         component: CategoriesComponent

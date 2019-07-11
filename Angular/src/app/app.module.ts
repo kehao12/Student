@@ -95,6 +95,13 @@ import { LessonsComponent } from './views/lessons/lessons.component';
 import { LessonComponent } from './views/lessons/lesson/lesson.component';
 import { LessonChangeComponent } from './views/lessons/lesson-change/lesson-change.component';
 import { LessonListComponent } from './views/lessons/lesson-list/lesson-list.component';
+import { LessconsComponent } from './views/lesscons/lesscons.component';
+import { LessconComponent } from './views/lesscons/lesscon/lesscon.component';
+import { LessconChangeComponent } from './views/lesscons/lesscon-change/lesscon-change.component';
+import { LessconListComponent } from './views/lesscons/lesscon-list/lesscon-list.component';
+
+
+
 
 
 
@@ -174,7 +181,10 @@ import { LessonListComponent } from './views/lessons/lesson-list/lesson-list.com
     LessonComponent,
     LessonChangeComponent,
     LessonListComponent,
-
+    LessconsComponent,
+    LessconComponent,
+    LessconChangeComponent,
+    LessconListComponent,
 
 
   ],

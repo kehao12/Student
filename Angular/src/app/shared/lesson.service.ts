@@ -10,6 +10,7 @@ export class LessonService {
   [x: string]: any;
   formData: Lesson;
   formData1: Lesson;
+  formDataI: Lesson;
   list: Lesson[];
   list1: Lesson[];
   constructor(private api: ApiService, private http: HttpClient) { }
