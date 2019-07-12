@@ -27,12 +27,7 @@ export class LessconChangeComponent implements OnInit {
       this.Lesson.refreshList();
     }
 
-    resetForm(form?: NgForm) {
-
-      if (form != null) {
-        form.resetForm();
-
-      }
+    resetForm() {
       this.service.formData = {
         ID: null,
         LESS_NOW: null,
@@ -42,14 +37,15 @@ export class LessconChangeComponent implements OnInit {
     }
     onSubmit(form: NgForm) {
       this.updateRecord(form);
+
     }
 
     updateRecord(form: NgForm) {
       console.log(this.service.formData);
       this.service.putCon(form.value).subscribe(res => {
         this.pnotify.showSuccessInsert('Update ' + this.service.formData.LESS_NOW + ' Success');
-        this.resetForm(form);
         this.service.refreshList();
+        this.resetForm();
       });
     }
     loadForm(con: Condition) {
@@ -61,9 +57,6 @@ export class LessconChangeComponent implements OnInit {
       }
     }
 
-    populateForm(con: Condition) {
-      this.service.formData = Object.assign({}, con);
-      this.service.formDataI = Object.assign({}, con);
-    }
+
 
 }

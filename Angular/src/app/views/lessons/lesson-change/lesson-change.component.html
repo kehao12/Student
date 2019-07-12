@@ -1,4 +1,5 @@
 <form #form="ngForm" autocomplete="off">
+  <input type="hidden" name="LESS_ID" #LESS_ID="ngModel" [(ngModel)]="service.formData.LESS_ID">
     <div class="row">
     <div class="form-group col-sm-6">
       <label>LESSION CODE</label>
@@ -7,7 +8,7 @@
         class="form-control"
         [ngClass]="{ 'is-invalid':(LESS_CODE.errors && LESS_CODE.touched) || !checkCode(-1,service.formData.LESS_CODE),'is-valid': !LESS_CODE.errors && LESS_CODE.touched}" >
         
-      <span *ngIf="!checkCode(-1,service.formData.LESS_CODE)" class="text-danger">
+      <span *ngIf="!checkCode(-1,service.formData.LESS_CODE && LESS_CODE.touched)" class="text-danger">
         Lesson code is exist
       </span>
     </div>
@@ -18,7 +19,7 @@
         class="form-control"  [ngClass]="{ 'is-invalid':(LESS_NAME.errors && LESS_NAME.touched) || !checkName(-1,service.formData.LESS_NAME),'is-valid': !LESS_NAME.errors && LESS_NAME.touched}"
         >
        
-      <span *ngIf="!checkName(-1,service.formData.LESS_NAME)" class="text-danger">
+      <span *ngIf="!checkName(-1,service.formData.LESS_NAME) && LESS_NAME.touched" class="text-danger">
         Lesson Name is exist
       </span>
     </div>

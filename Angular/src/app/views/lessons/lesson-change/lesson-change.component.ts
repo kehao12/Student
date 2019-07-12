@@ -106,5 +106,8 @@ export class LessonChangeComponent implements OnInit {
             }
           return true;
           }
-
+          populateForm(less: Lesson) {
+            this.service.formData = Object.assign({}, less);
+            this.service.formDataI = Object.assign({}, less);
+          }
 }

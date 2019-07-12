@@ -78,8 +78,6 @@ export class LessonComponent implements OnInit {
           });
         }
 
-
-
           // Check valid Code và Name
 
           checkCode(id: number, code: string): boolean {

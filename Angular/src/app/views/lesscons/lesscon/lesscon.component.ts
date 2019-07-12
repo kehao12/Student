@@ -40,9 +40,7 @@ export class LessconComponent implements OnInit {
       };
     }
       onSubmit(form: NgForm) {
-        if (form.value.INTAKE_ID == null) {
           this.inserRecord(form);
-        }
         }
 
       inserRecord(form: NgForm) {
